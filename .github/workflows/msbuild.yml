@@ -20,6 +20,4 @@ jobs:
     - name: Build?
       run: msbuild ${{ github.workspace }}
     - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      run: tree /f /a
