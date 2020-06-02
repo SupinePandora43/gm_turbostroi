@@ -21,3 +21,7 @@ jobs:
       run: msbuild ${{ github.workspace }}
     - name: Run a multi-line script
       run: tree /f /a
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        path: Release/gmsv_turbostroi_win32.dll
