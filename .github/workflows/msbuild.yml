@@ -12,7 +12,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.0
     - uses: actions/checkout@v2
     - name: submodules
-      run: git submodule update --recursive
+      run: git submodule update --init --recursive
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.0.2
     - run: nuget restore ${{ github.workspace }}/gm_turbostroi_win32.sln
