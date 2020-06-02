@@ -11,6 +11,9 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.0
     - uses: actions/checkout@v2
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.0.2
+    - run: nuget install ${{ github.workspace }}/gmsv_turbostroi_win32/packages.config
     - name: Build?
       run: msbuild ${{ github.workspace }}
     - name: Run a multi-line script
