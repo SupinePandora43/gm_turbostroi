@@ -55,12 +55,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook.cpp" />
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook_hookmangen.cpp" />
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook_impl_chookidman.cpp" />
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook_impl_chookmaninfo.cpp" />
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook_impl_cproto.cpp" />
-    <ClCompile Include="$GITHUB_WORKSPACE\external\metamod-source\core\sourcehook\sourcehook_impl_cvfnptr.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook_hookmangen.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook_impl_chookidman.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook_impl_chookmaninfo.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook_impl_cproto.cpp" />
+    <ClCompile Include="..\external\metamod-source\core\sourcehook\sourcehook_impl_cvfnptr.cpp" />
     <ClCompile Include="gmsv_turbostroi_win32.cpp" />
   </ItemGroup>
   <ItemGroup>
