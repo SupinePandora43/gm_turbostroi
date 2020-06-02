@@ -16,6 +16,7 @@ jobs:
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.0.2
     - run: nuget restore ${{ github.workspace }}/gm_turbostroi_win32.sln
+    - run: tree /f /a
     - name: Build?
       run: msbuild ${{ github.workspace }}
     - name: Run a multi-line script
