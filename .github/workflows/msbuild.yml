@@ -1,4 +1,4 @@
-name: MSBuild #MSDos?
+name: MSBuild
 on:
   push:
     branches: [ master ]
@@ -8,19 +8,18 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - name: Add msbuild to PATH
+    - name: Install MSBuild
       uses: microsoft/setup-msbuild@v1.0.0
-    - uses: actions/checkout@v2
-    - name: submodules
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Download submodules
       run: git submodule update --init --recursive
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.0.2
-    - run: nuget restore ${{ github.workspace }}/gm_turbostroi_win32.sln
-    - run: tree /f /a
-    - name: Build?
+    - name: Install nuget packages
+      run: nuget restore ${{ github.workspace }}/gm_turbostroi_win32.sln
+    - name: Build
       run: msbuild ${{ github.workspace }}
-    - name: Run a multi-line script
-      run: tree /f /a
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
