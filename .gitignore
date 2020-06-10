@@ -45,3 +45,9 @@ support/vs2010/*/*
 *.sdf
 *.psess
 *.vsp
+
+# visual studio
+
+Release/
+packages/
+.vs/

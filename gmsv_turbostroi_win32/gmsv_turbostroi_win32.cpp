@@ -513,7 +513,7 @@ LUA_FUNCTION( API_InitializeTrain )
 	CBaseHandle* EntHandle;
 	IServerNetworkable* Entity;
 	//Get entity index
-	EntHandle = (CBaseHandle*)LUA->GetUserType<CBaseHandle>(1, Type::ENTITY);
+	EntHandle = (CBaseHandle*)LUA->GetUserType<CBaseHandle>(1, Type::Entity);
 	edict_t* EntityEdict = engineServer->PEntityOfEntIndex(EntHandle->GetEntryIndex());
 	Entity = EntityEdict->GetNetworkable();
 	trains_pos.insert(std::pair<int, IServerNetworkable*>(EntHandle->GetEntryIndex(), Entity));
@@ -602,7 +602,7 @@ LUA_FUNCTION( API_DeinitializeTrain )
 	//RailNetwork
 	CBaseHandle* EntHandle;
 	//Get entity index
-	EntHandle = (CBaseHandle*)LUA->GetUserType<CBaseHandle>(1, Type::ENTITY);
+	EntHandle = (CBaseHandle*)LUA->GetUserType<CBaseHandle>(1, Type::Entity);
 	trains_pos.erase(EntHandle->GetEntryIndex());
 	//End RailNetwork
 
@@ -720,11 +720,11 @@ LUA_FUNCTION( API_RegisterSystem )
 LUA_FUNCTION( API_SendMessage ) 
 {
 	bool successful = true;
-	LUA->CheckType(2,Type::NUMBER);
-	LUA->CheckType(3,Type::STRING);
-	LUA->CheckType(4,Type::STRING);
-	LUA->CheckType(5,Type::NUMBER);
-	LUA->CheckType(6,Type::NUMBER);
+	LUA->CheckType(2,Type::Number);
+	LUA->CheckType(3,Type::String);
+	LUA->CheckType(4,Type::String);
+	LUA->CheckType(5,Type::Number);
+	LUA->CheckType(6,Type::Number);
 
 	LUA->GetField(1,"_sim_userdata");
 	thread_userdata* userdata = LUA->GetUserType<thread_userdata>(-1, 1);
@@ -752,10 +752,10 @@ LUA_FUNCTION( API_SendMessage )
 LUA_FUNCTION( API_RnSendMessage ) 
 {
 	bool successful = true;
-	LUA->CheckType(2, Type::NUMBER);
-	LUA->CheckType(3, Type::NUMBER);
-	LUA->CheckType(4, Type::STRING);
-	LUA->CheckType(6, Type::NUMBER);
+	LUA->CheckType(2, Type::Number);
+	LUA->CheckType(3, Type::Number);
+	LUA->CheckType(4, Type::String);
+	LUA->CheckType(6, Type::Number);
 
 	if (rn_userdata) {
 		rn_thread_msg tmsg;
@@ -851,14 +851,14 @@ LUA_FUNCTION( API_ReadAvailable )
 
 LUA_FUNCTION( API_SetSimulationFPS ) 
 {
-	LUA->CheckType(1,Type::NUMBER);
+	LUA->CheckType(1,Type::Number);
 	rate = LUA->GetNumber(1);
 	return 0;
 }
 
 LUA_FUNCTION( API_SetMTAffinityMask ) 
 {
-	LUA->CheckType(1, Type::NUMBER);
+	LUA->CheckType(1, Type::Number);
 	int MTAffinityMask = (int)LUA->GetNumber(1);
 	ConColorMsg(Color(0, 255, 0), "Turbostroi: Main Thread Running on CPU%i \n", GetCurrentProcessorNumber());
 	if (!SetThreadAffinityMask(GetCurrentThread(), static_cast<DWORD_PTR>(MTAffinityMask))) {
@@ -872,7 +872,7 @@ LUA_FUNCTION( API_SetMTAffinityMask )
 
 LUA_FUNCTION( API_SetSTAffinityMask ) 
 {
-	LUA->CheckType(1, Type::NUMBER);
+	LUA->CheckType(1, Type::Number);
 	SimThreadAffinityMask = (int)LUA->GetNumber(1);
 	return 0;
 }
@@ -945,7 +945,7 @@ GMOD_MODULE_OPEN() {
 	//Check whether being ran on server
 	LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
 	LUA->GetField(-1,"SERVER");
-	if (LUA->IsType(-1,Type::NIL)) {
+	if (LUA->IsType(-1,Type::Nil)) {
 		LUA->GetField(-2,"Msg");
 		LUA->PushString("Metrostroi: DLL failed to initialize (gm_turbostroi.dll can only be used on server)\n");
 		LUA->Call(1,0);
@@ -955,7 +955,7 @@ GMOD_MODULE_OPEN() {
 
 	//Check for global table
 	LUA->GetField(-1,"Metrostroi");
-	if (LUA->IsType(-1,Type::NIL)) {
+	if (LUA->IsType(-1,Type::Nil)) {
 		LUA->GetField(-2,"Msg");
 		LUA->PushString("Metrostroi: DLL failed to initialize (cannot be used standalone without metrostroi addon)\n");
 		LUA->Call(1,0);
